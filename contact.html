@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesfaye | Contact</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container">
+      <a href="index.html"><img src="images/log.png" alt="Logo" class="log-img"></a>
+      <input type="checkbox" id="check">
+      <label for="check" class="menu-icon">&#9776;</label>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-subtitle">Connect with me via social platforms or send me a message below!</p>
+
+    
+    <!-- <div class="social-links">
+      <a href="https://t.me/@Enatwa_Gondar" target="_blank" class="telegram"><i class="fab fa-telegram"></i> Telegram</a>
+      <a href="https://www.youtube.com/@tesfayeseifu7143" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://www.linkedin.com/in/@acefaye26" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://www.tiktok.com/@acefaye26" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+-->
+    <!-- Contact Form with Formspree -->
+ <form id="contactForm" action=" https://formspree.io/f/mldoeype" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" id="fullName" placeholder=" " required>
+        <label for="fullName">Full Name</label>
+        <small class="error-message"></small>
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="email" id="email" placeholder=" " required>
+        <label for="email">Email</label>
+        <small class="error-message"></small>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" name="phone" id="phone" placeholder=" ">
+        <label for="phone">Phone Number</label>
+      </div>
+
+   <!-- <div class="form-group">
+        <input type="text" name="address" id="address" placeholder=" ">
+        <label for="address">Address</label>
+      </div>-->
+   
+   <div class="form-group">
+        <select name="address" id="address">
+          <option value="" disabled selected>Select your city</option>
+          <option value="Addis Ababa">Addis Ababa</option>
+          <option value="Gondar">Gondar</option>
+          <option value="Assosa">Assosa</option>
+          <option value="Bahir Dar">Bahir Dar</option>
+          <option value="Dire Dawa">Dire Dawa</option>
+          <option value="Hawassa">Hawassa</option>
+          <option value="Jimma">Jimma</option>
+          <option value="Harar">Harar</option>
+          <option value="Other">Other region </option>
+        </select>
+        <label for="address">City</label>
+      </div>
+   
+   
+
+      <div class="form-group">
+        <textarea name="message" id="message" rows="4" placeholder=" " required></textarea>
+        <label for="message">Message</label>
+        <small class="error-message"></small>
+      </div>
+
+      <button type="submit" class="send-btn">Send Message</button>
+      <p class="form-status"></p>
+    </form>
+  </section>
+
+<footer>
+    <div class="footer-content">
+      
+      <div class="social-links">
+        <a href="https://t.me/Enatwa_Gondar" target="_blank" class="telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/@tesfayeseifu7143" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/acefaye26" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@acefaye26" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      
+      <div> 
+      <p>&copy; Tesfaye Seifu 2025. All Rights Reserved.</p>
+        </div>
+      
+    </div>
+  </footer>
+  <!-- JS Validation and Formspree Handling -->
+ <script>
+    const form = document.getElementById("contactForm");
+    const status = document.querySelector(".form-status");
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      let valid = true;
+      document.querySelectorAll(".error-message").forEach(msg => msg.textContent = "");
+
+      const name = document.getElementById("fullName");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+
+      // Validation
+      if(name.value.trim().length < 5){
+        name.nextElementSibling.textContent = "Enter your full name (min 5 chars)";
+        valid = false;
+      }
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if(!email.value.match(emailPattern)){
+        email.nextElementSibling.textContent = "Enter a valid email";
+        valid = false;
+      }
+      if(message.value.trim().length < 20){
+        message.nextElementSibling.textContent = "Message must be at least 20 characters";
+        valid = false;
+      }
+      if(!valid) return;
+
+      // Send form using fetch to Formspree
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if(response.ok){
+          status.textContent = "✅ Message sent successfully!";
+          status.style.color = "green";
+          form.reset();
+        } else {
+          status.textContent = "❌ Failed to send message. Try again.";
+          status.style.color = "red";
+        }
+      } catch(err){
+        status.textContent = "❌ Error sending message. Check your connection.";
+        status.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

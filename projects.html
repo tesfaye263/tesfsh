@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesfaye | Projects</title>
+  <link rel="stylesheet" href="styles/style.css">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+     <a href="index.html"><img src="images/log.png" alt="Logo" class="log-img"></a>
+      <input type="checkbox" id="check">
+      <label for="check" class="menu-icon">&#9776;</label>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="projects">
+    <h2 class="section-title">My Projects</h2>
+    <p class="section-subtitle">Here are some of my academic and personal projects:</p>
+
+    <div class="project-container">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <h3><i class="fas fa-credit-card"></i> ATM System (Java - OOP)</h3>
+        <p>Developed an ATM simulation system using Object-Oriented Programming concepts in Java.</p>
+        <div class="extra-info">
+          <p>Features include account authentication, balance inquiry, cash withdrawal, and transaction history.
+            And also it shows clearly pillars of OOP.
+          </p>
+        </div>
+        <button class="view-more">View More</button>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <h3><i class="fas fa-book"></i> Library Management System (C++ - DSA)</h3>
+        <p>Built a library management system using C++ and Data Structures & Algorithms.</p>
+        <div class="extra-info">
+          <p>Used linked lists and file handling for efficient book management, search operations, and user records.</p>
+        </div>
+        <button class="view-more">View More</button>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <h3><i class="fas fa-database"></i> Bank Management System (Oracle DB & SQL Server)</h3>
+        <p>Designed and implemented a database-driven bank management system using Oracle Database and SQL Server.</p>
+        <div class="extra-info">
+          <p>Created relational schemas, SQL queries, and stored procedures to manage customer accounts and transactions securely.</p>
+        </div>
+        <button class="view-more">View More</button>
+      </div>
+
+    </div>
+    
+    
+    
+    
+    <div class="link">
+        <button class="download"> 
+          <a href="https://drive.google.com/file/d/1FgHwGJ_V5BJzx82vM5UDnLIbKBzIYfBH/view?pli=1" target="_blank">
+Download My Project </a></button>
+      
+    </div>
+  </section>
+
+  
+  
+  
+ <footer>
+    <div class="footer-content">
+      
+      <div class="social-links">
+        <a href="https://t.me/Enatwa_Gondar" target="_blank" class="telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/@tesfayeseifu7143" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/acefaye26" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@acefaye26" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      
+      <div> 
+      <p>&copy; Tesfaye Seifu 2025. All Rights Reserved.</p>
+        </div>
+      
+    </div>
+  </footer>
+  <!-- Small JS for view-more toggle -->
+  <script>
+    const buttons = document.querySelectorAll(".view-more");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const info = btn.previousElementSibling;
+        info.classList.toggle("show");
+        btn.textContent = info.classList.contains("show") ? "View Less" : "View More";
+      });
+    });
+  </script>
+</body>
+</html>
